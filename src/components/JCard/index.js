@@ -40,7 +40,9 @@ function JCard() {
   const [subTitle, setSubTitle] = useState(
     'THE CURRENT STATE OF LO-FI GUITAR ROCK'
   );
-  const [coverImage, setCoverImage] = useState('/ModernSlacker.png');
+  const [coverImage, setCoverImage] = useState(
+    'https://drakewilcox.github.io/Mixtape-JCard-Generator/ModernSlacker.png'
+  );
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
   const [bgColor, setBgColor] = useState('#080808');
