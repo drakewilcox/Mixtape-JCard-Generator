@@ -1,19 +1,33 @@
+.twoColContainer {
+  width: 1280px;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  height: 100vh;
+}
+
 .preview {
   text-align: initial;
-
+  position: sticky;
+  height: 100vh;
+  top: 100px;
   display: inline-block;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
+  grid-column: span 1;
+  display: flex;
+  justify-content: center;
 }
 .template {
   width: 4in; /* 4 inches * 96 pixels */
-  height: 6.5625in; /* 6.5625 inches * 96 pixels */
+  height: 6.0625in; /* 6.5625 inches * 96 pixels */
   line-height: 1.1;
 }
 
-div {
+/* div {
   display: block;
   unicode-bidi: isolate;
-}
+}  */
 
 .printable {
   position: relative;
@@ -71,6 +85,53 @@ div {
   }
 }
 
+.fold {
+  position: absolute;
+  width: 4.5in;
+}
+
+.fold1 {
+  &:before {
+    position: absolute;
+    top: 5.0625in;
+    bottom: 0in;
+    left: -0.25in;
+    right: 0.25in;
+    z-index: -2;
+    content: '';
+    border: solid;
+    border-width: 1pt 0 0 0;
+  }
+}
+
+.fold2 {
+  &:before {
+    position: absolute;
+    top: 5.5625in;
+    bottom: 0in;
+    left: -0.25in;
+    right: 0.25in;
+    z-index: -2;
+    content: '';
+    border: solid;
+    border-width: 1pt 0 0 0;
+  }
+}
+
+.fold3 {
+  &:before {
+    position: absolute;
+    top: 2.5in;
+    bottom: 0in;
+    left: -0.25in;
+    right: 0.25in;
+    z-index: -2;
+    content: '';
+    border: solid;
+    border-width: 1pt 0 0 0;
+  }
+}
+
 .boundaries {
   position: absolute;
   top: 0;
@@ -86,51 +147,130 @@ div {
   width: 4in;
   background-color: rgb(242, 239, 239);
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 .cover {
   position: absolute;
   height: 246px; /* 2.5625 inches * 96 pixels */
   width: 4in;
-  /* background-color: lightblue; */
+  /* border: 1px solid black; */
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   transform: translateY(2.5in);
   background-color: white;
+  overflow: hidden;
 }
-
+.coverImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .title {
   position: absolute;
   height: 48px; /* 0.5 inches * 96 pixels */
-  /* background-color: lightgreen; */
   display: flex;
-  /* justify-content: center; */
+  /* background-color: pink !important; */
   align-items: center;
-  background-color: white;
+  /* background-color: white; */
   transform: translateY(5.0625in);
+  /* border: 1px solid black; */
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 5px;
+  /* margin: 0px 5px; */
 }
 
 .titleText {
-  padding: 10px;
-  font-size: 30px;
-  font-weight: 500;
+  font-family: var(--font-impact);
+  /* font-weight: 500; */
   text-transform: uppercase;
+}
+
+.subTitleText {
+  /* font-size: 10px; */
+  font-family: var(--font-helvetica);
+
+  @media print {
+    font-family: var(--font-helvetica);
+  }
 }
 
 .flap {
   position: absolute;
-  height: 96px; /* 1 inch * 96 pixels */
-  /* background-color: lightcoral; */
+  height: 0.5in; /* 1 inch * 96 pixels */
+  width: 4in;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  overflow: hidden;
+
   transform: translateY(5.5625in);
+  /* border: 1px solid black; */
 }
+
+.flapContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  font-size: 10px;
+
+  @media print {
+    font-family: 'Corier New', Courier, monospace;
+  }
+}
+
+.flapTop {
+  padding-top: 5px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @media print {
+    font-family: 'Corier New', Courier, monospace;
+  }
+}
+
+.flapLeft,
+.flapRight {
+  width: 50%;
+  padding: 0ch 5px;
+  border-bottom: 1px dotted currentColor;
+
+  @media print {
+    font-family: 'Corier New', Courier, monospace;
+  }
+}
+
+.flapLeft {
+  text-align: left;
+  border-right: 1px dotted currentColor;
+}
+
+.flapRight {
+  text-align: right;
+}
+
+.flapBottom {
+  font-style: italic;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 5px;
+  text-align: center;
+  /* padding-top: 5px; */
+}
+
 .trackTable {
   width: 100%;
   border-collapse: collapse;
@@ -140,25 +280,40 @@ div {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.trackTable th,
+.headerContainer {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  span {
+    padding: 5px;
+  }
+}
+
 .trackTable td {
   border: 1px solid black;
-  padding: 2px 6px;
+  padding: 0px 6px;
   text-align: left;
-  font-size: 10px;
+
   /* white-space: nowrap; */
 
   overflow: hidden;
 
-  height: 6px; /* Set a consistent row height */
-
-  line-height: 6px; /* Match line-height to row height */
+  height: 10px; /* Set a consistent row height */
 }
 
 .trackTable th {
   height: 12px;
   line-height: 12px;
+  /* border: none; */
 }
+
+/* .trackTable th:first-child {
+  text-align: left;
+} */
+/* .trackTable th:last-child {
+  text-align: right;
+} */
 
 .trackTable td:first-child,
 .trackTable th:first-child {
@@ -174,9 +329,8 @@ div {
 
 .trackTable th {
   text-align: center;
-  text-transform: uppercase;
   background-color: #f4f4f4;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .trackTable tr:nth-child(even) {
@@ -195,10 +349,139 @@ div {
   vertical-align: center;
 }
 
+.editor {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 300px;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+
+  h3 {
+    padding: none;
+    border-bottom: 1px solid black;
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+  }
+}
+
+.editor::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+.imageControls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fileInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* Space between button and file name */
+}
+
+.fileLabel {
+  background-color: black;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 4px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.fileName {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+}
+
+.range {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+}
+
+.colorPickers {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.pickerContainer {
+  grid-column: span 1;
+  height: 20px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.sizePicker {
+  grid-column: span 1;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    width: 50px;
+  }
+}
+
+h5 {
+  grid-column: span 2;
+  margin-block-end: 0;
+  width: 25%;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted black;
+  /* margin-block-start: 0; */
+}
+
+.colorPickers input[type='color'] {
+  width: 50px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.inputs {
+  width: 100%;
+}
+
 .titleInput {
   width: 100%;
-  margin-top: 10px;
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
   font-family: 'Courier New', Courier, monospace;
   border: 1px solid #ccc;
@@ -207,10 +490,52 @@ div {
 .textArea {
   width: 100%;
   height: 100px;
-  margin-top: 20px;
+  min-height: 100px;
+
   padding: 10px;
   font-size: 14px;
   font-family: 'Courier New', Courier, monospace;
   border: 1px solid #ccc;
   resize: none;
+}
+
+.twoColFlapInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.backFlapInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  } */
+
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.inputAndLabelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media print {
+  /* @page: first{
+    margin-top: 0;
+  }; */
+  @page {
+    margin: 20mm;
+  }
+
+  .printable {
+  }
 }

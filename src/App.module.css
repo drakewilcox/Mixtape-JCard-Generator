@@ -1,20 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&family=IBM+Plex+Sans:wght@300;400;700&family=Anton&display=swap');
+
 .app {
   /* text-align: center; */
   color: black;
   font-family: 'Corier New', Courier, monospace;
   h1 {
+    /* font-family: var(--font-helvetica); */
     font-weight: 500;
   }
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   .mainColumn {
-    display: block;
-    width: 640px;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
     text-align: center;
+    overflow: hidden;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-impact: Impact, sans-serif;
+  --font-helvetica: Helvetica, Arial, sans-serif;
+  --font-arial: Arial, sans-serif;
+  --font-akzidenz: 'Work Sans', sans-serif; /* Google Font alternative */
+  --font-univers: 'IBM Plex Sans', sans-serif; /* Google Font alternative */
+  --font-anton: 'Anton', sans-serif;
+}
+
+.font-impact {
+  font-family: var(--font-impact);
+}
+
+.font-helvetica {
+  font-family: var(--font-helvetica);
+}
+
+.font-arial {
+  font-family: var(--font-arial);
+}
+
+.font-akzidenz {
+  font-family: var(--font-akzidenz);
+}
+
+.font-univers {
+  font-family: var(--font-univers);
+}
+
+.font-Anton {
+  font-family: var(--font-anton);
 }

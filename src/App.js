@@ -5,7 +5,7 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.mainColumn}>
-        <h1>Cassette J-Card Template Generator</h1>
+        <h1>MIXTAPE J-CARD GENERATOR</h1>
         <JCard />
       </div>
     </div>
