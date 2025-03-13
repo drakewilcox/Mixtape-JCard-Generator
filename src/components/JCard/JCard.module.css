@@ -198,7 +198,7 @@
 
 .flap {
   position: absolute;
-  height: 0.5in; /* 1 inch * 96 pixels */
+  height: 0.5in;
   width: 4in;
 
   display: flex;
@@ -207,7 +207,6 @@
   overflow: hidden;
 
   transform: translateY(5.5625in);
-  /* border: 1px solid black; */
 }
 
 .flapContainer {
