@@ -4,37 +4,73 @@ import styles from './JCard.module.css';
 import clsx from 'clsx';
 
 function JCard() {
+  const [sideAContent, setSideAContent] = useState(`
+    THE MEAT - Stove
+    COMPRESSED DRUM - Bondo
+    PRICKS ON THE COUCH - Raincult
+    NINA - Crumb
+    TEETH - Duster
+    GOOSE GHOST - Stove
+    ALIVVE - Sipper
+    UGLY BRUNETTE - Horse Jumper of Love
+    WICKED BOY - Alex G. 
+    LEMON - In Hock
+    BIG FIRE - 22 Halo
+    HEAVEN 22 - Green Gerry
+    BABY ALLIGATOR - Ovlov
+    STILL LIFE - Sunforger
+`);
+  const [sideBContent, setSideBContent] = useState(`
+    MOSQUITER - STOVE
+    DRIVE - Dead Sullivan
+    FARMLAND - Cattlemen
+    SIMULATION SWARM - Big Thief
+    ALL THE RICHES - Floating Action
+    OH HEY - Helvetia
+    IDM - Evan Wright
+    PROBABLY ME - Raincult
+    GIVE UP YOUR LIVE - Spirit of the Beehive
+    ACROSS WATER - Mia Joy
+    PROBLEM - Hovvdy
+    2002 - Enumclaw
+    CINNAMON - Palehound
+    BOO - Pinback
+`);
+  const [title, setTitle] = useState('MODERN SLACKER');
+  const [subTitle, setSubTitle] = useState(
+    'THE CURRENT STATE OF LO-FI GUITAR ROCK'
+  );
+  const [coverImage, setCoverImage] = useState('/ModernSlacker.png');
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(1);
+  const [bgColor, setBgColor] = useState('#080808');
+  const [textColor, setTextColor] = useState('#f6eedf');
+  const [titleColor, setTitleColor] = useState('#000000');
+  const [titleOutline, setTitleOutline] = useState('#f6eedf');
+  const [outlineEnabled, setOutlineEnabled] = useState(true);
+  const [specifyTitleColor, setSpecifyTitleColor] = useState(true);
+  const [titleFontSize, setTitleFontSize] = useState(33);
+  const [trackFontSize, setTrackFontSize] = useState(9);
+  const [titleLetterSpacing, setTitleLetterSpacing] = useState(1.5);
+  const [subTitleFontSize, setSubTitleFontSize] = useState(12);
+  const [subTitleLetterSpacing, setSubTitleLetterSpacing] = useState(0);
+  const [tracklistHeader, setTracklistHeader] = useState('MODERN SLACKER');
+  const [coverImageName, setCoverImageName] = useState('No file chosen');
+  const [flapTopLeftText, setFlapTopLeftText] = useState(
+    'Recording Date: 04.12.2022'
+  );
+  const [flapTopRightText, setFlapTopRightText] = useState('EVRTHSWRD');
+  const [flapDescriptionText, setFlapDescriptionText] = useState(
+    '90 min. of compressed vocals, inverted guitar chords, and that one drum beat'
+  );
+
   const printRef = useRef(null);
 
   const handleDownloadPDF = useReactToPrint({
     contentRef: printRef,
+    documentTitle: `${title} JCard`,
   });
 
-  const [sideAContent, setSideAContent] = useState('');
-  const [sideBContent, setSideBContent] = useState('');
-  const [title, setTitle] = useState('DESTROY THE EMPIRE');
-  const [subTitle, setSubTitle] = useState('DUB SOUND SYSTEM SELECTIONS');
-  const [coverImage, setCoverImage] = useState(null);
-  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
-  const [scale, setScale] = useState(1);
-  const [bgColor, setBgColor] = useState('#ffffff');
-  const [textColor, setTextColor] = useState('#000000');
-  const [titleColor, setTitleColor] = useState('#000000');
-  const [titleOutline, setTitleOutline] = useState('#000000');
-  const [outlineEnabled, setOutlineEnabled] = useState(false);
-  const [specifyTitleColor, setSpecifyTitleColor] = useState(false);
-  const [titleFontSize, setTitleFontSize] = useState(30);
-  const [trackFontSize, setTrackFontSize] = useState(10);
-  const [titleLetterSpacing, setTitleLetterSpacing] = useState(0);
-  const [subTitleFontSize, setSubTitleFontSize] = useState(12);
-  const [subTitleLetterSpacing, setSubTitleLetterSpacing] = useState(0);
-  const [tracklistHeader, setTracklistHeader] = useState('');
-  const [coverImageName, setCoverImageName] = useState('No file chosen');
-  const [flapTopLeftText, setFlapTopLeftText] = useState('Recording Date:');
-  const [flapTopRightText, setFlapTopRightText] = useState('');
-  const [flapDescriptionText, setFlapDescriptionText] = useState(''); // Full width text
-
-  // Convert text input into arrays, removing empty lines
   const sideATracks = sideAContent
     .split('\n')
     .filter((track) => track.trim() !== '');
@@ -376,25 +412,35 @@ function JCard() {
         </div>
 
         <h3>TRACKLIST</h3>
-        <input
-          type="text"
-          className={styles.titleInput}
-          placeholder="Tracklist Header Text"
-          value={tracklistHeader}
-          onChange={(e) => setTracklistHeader(e.target.value)}
-        />
-        <textarea
-          className={styles.textArea}
-          placeholder="Enter Side A tracks (one per line)"
-          value={sideAContent}
-          onChange={(e) => setSideAContent(e.target.value)}
-        />
-        <textarea
-          className={styles.textArea}
-          placeholder="Enter Side B tracks (one per line)"
-          value={sideBContent}
-          onChange={(e) => setSideBContent(e.target.value)}
-        />
+        <div className={styles.inputAndLabelContainer}>
+          <label>Tracklist Header Text</label>
+          <input
+            type="text"
+            className={styles.titleInput}
+            placeholder="Tracklist Header Text"
+            value={tracklistHeader}
+            onChange={(e) => setTracklistHeader(e.target.value)}
+          />
+        </div>
+        <div className={styles.inputAndLabelContainer}>
+          <label>Side A Tracks</label>
+          <textarea
+            className={styles.textArea}
+            placeholder="Enter Side A tracks (one per line)"
+            value={sideAContent}
+            onChange={(e) => setSideAContent(e.target.value)}
+          />
+        </div>
+        <div className={styles.inputAndLabelContainer}>
+          <label>Side B Tracks</label>
+          <textarea
+            className={styles.textArea}
+            placeholder="Enter Side B tracks (one per line)"
+            value={sideBContent}
+            onChange={(e) => setSideBContent(e.target.value)}
+          />
+        </div>
+
         <div className={styles.sizePicker}>
           <label>TRACK NAME FONT SIZE</label>
           <input

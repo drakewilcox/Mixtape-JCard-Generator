@@ -13,21 +13,20 @@
   height: 100vh;
   top: 100px;
   display: inline-block;
-  /* margin-bottom: 1.5em; */
   grid-column: span 1;
   display: flex;
   justify-content: center;
 }
 .template {
-  width: 4in; /* 4 inches * 96 pixels */
-  height: 6.0625in; /* 6.5625 inches * 96 pixels */
+  width: 4in;
+  height: 6.0625in;
   line-height: 1.1;
 }
 
 /* div {
   display: block;
   unicode-bidi: isolate;
-}  */
+} */
 
 .printable {
   position: relative;
@@ -63,7 +62,6 @@
     border: solid;
   }
   &:before {
-    /* display: none; */
     top: -0.25in;
     bottom: -0.25in;
     left: 0;
@@ -143,7 +141,7 @@
 .tracklist {
   display: block;
   position: absolute;
-  height: 240px; /* 2.5 inches * 96 pixels */
+  height: 240px;
   width: 4in;
   background-color: rgb(242, 239, 239);
   display: flex;
@@ -151,9 +149,9 @@
 
 .cover {
   position: absolute;
-  height: 246px; /* 2.5625 inches * 96 pixels */
+  height: 246px;
   width: 4in;
-  /* border: 1px solid black; */
+
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -169,31 +167,29 @@
 }
 .title {
   position: absolute;
-  height: 48px; /* 0.5 inches * 96 pixels */
+  height: 48px;
   display: flex;
-  /* background-color: pink !important; */
+
   align-items: center;
-  /* background-color: white; */
+
   transform: translateY(5.0625in);
-  /* border: 1px solid black; */
 }
 
 .titleContainer {
   display: flex;
   flex-direction: column;
   padding: 3px 5px;
-  /* margin: 0px 5px; */
 }
 
 .titleText {
   font-family: var(--font-impact);
-  /* font-weight: 500; */
+
   text-transform: uppercase;
 }
 
 .subTitleText {
-  /* font-size: 10px; */
   font-family: var(--font-helvetica);
+  font-weight: 600;
 
   @media print {
     font-family: var(--font-helvetica);
@@ -223,7 +219,7 @@
   height: 100%;
 
   font-size: 10px;
-
+  font-weight: bold;
   @media print {
     font-family: 'Corier New', Courier, monospace;
   }
@@ -526,6 +522,21 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+button {
+  padding: 10px;
+  width: 25%;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 @media print {
