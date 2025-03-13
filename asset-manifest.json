@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Mixtape-JCard-Generator/static/css/main.11e31ce8.css",
-    "main.js": "/Mixtape-JCard-Generator/static/js/main.42472bc8.js",
+    "main.js": "/Mixtape-JCard-Generator/static/js/main.5bc08846.js",
     "index.html": "/Mixtape-JCard-Generator/index.html",
     "main.11e31ce8.css.map": "/Mixtape-JCard-Generator/static/css/main.11e31ce8.css.map",
-    "main.42472bc8.js.map": "/Mixtape-JCard-Generator/static/js/main.42472bc8.js.map"
+    "main.5bc08846.js.map": "/Mixtape-JCard-Generator/static/js/main.5bc08846.js.map"
   },
   "entrypoints": [
     "static/css/main.11e31ce8.css",
-    "static/js/main.42472bc8.js"
+    "static/js/main.5bc08846.js"
   ]
 }
