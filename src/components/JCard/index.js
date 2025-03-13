@@ -41,7 +41,7 @@ function JCard() {
     'THE CURRENT STATE OF LO-FI GUITAR ROCK'
   );
   const [coverImage, setCoverImage] = useState(
-    'https://drakewilcox.github.io/Mixtape-JCard-Generator/ModernSlacker.png'
+    `https://drakewilcox.github.io/Mixtape-JCard-Generator/ModernSlacker.png?timestamp=${new Date().getTime()}`
   );
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
@@ -65,6 +65,8 @@ function JCard() {
   const [flapDescriptionText, setFlapDescriptionText] = useState(
     '90 min. of compressed vocals, inverted guitar chords, and that one drum beat'
   );
+
+  console.log('COVER IMAGE URL:', coverImage);
 
   const printRef = useRef(null);
 
