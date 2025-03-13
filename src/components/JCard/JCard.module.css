@@ -53,36 +53,31 @@
   left: 0;
   right: 0;
   background-color: inherit;
-
-  &:before,
-  &:after {
-    position: absolute;
-    z-index: 0;
-    content: '';
-    border: solid;
-  }
-  &:before {
-    top: -0.25in;
-    bottom: -0.25in;
-    left: 0;
-    right: 0;
-    border-top-width: 0px;
-    border-right-width: 1pt;
-    border-bottom-width: 0px;
-    border-left-width: 1pt;
-  }
-  &:after {
-    top: 0;
-    bottom: 0;
-    left: -0.25in;
-    right: -0.25in;
-    border-top-width: 1pt;
-    border-right-width: 0px;
-    border-bottom-width: 1pt;
-    border-left-width: 0px;
-  }
 }
 
+.crop::before,
+.crop::after {
+  position: absolute;
+  z-index: 0;
+  content: ' '; /* Changed from empty string to a space */
+  border: solid black; /* Ensure border color */
+}
+
+.crop::before {
+  top: -0.25in;
+  bottom: -0.25in;
+  left: 0;
+  right: 0;
+  border-width: 0px 1pt 0px 1pt; /* Ensures vertical crop lines */
+}
+
+.crop::after {
+  top: 0;
+  bottom: 0;
+  left: -0.25in;
+  right: -0.25in;
+  border-width: 1pt 0px 1pt 0px; /* Ensures horizontal crop lines */
+}
 .fold {
   position: absolute;
   width: 4.5in;
